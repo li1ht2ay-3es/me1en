@@ -7,6 +7,11 @@ inputs:
     required: false
     default: ''
 
+  arch:
+    description: system platform
+    required: false
+    default: x64
+
 
 runs:
   using: composite
@@ -26,7 +31,7 @@ runs:
 
     - uses: hendrikmuhs/ccache-action@main
       with:
-        key: ${{ inputs.core }}-${{ inputs.arch }}
+        key: ${{ inputs.arch }}
 
 
     - shell: bash
@@ -53,5 +58,5 @@ runs:
 
     - uses: actions/upload-artifact@main
       with:
-        name: vice_${{ inputs.core }}_${{ inputs.arch }}
+        name: mesen_${{ inputs.arch }}
         path: ${{ github.workspace }}/**.dll
