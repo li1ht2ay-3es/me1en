@@ -150,7 +150,7 @@ InteropDLL/$(OBJFOLDER)/$(SHAREDLIB): $(SEVENZIPOBJ) $(LUAOBJ) $(UTILOBJ) $(CORE
 Libretro/$(OBJFOLDER)/$(LIBRETROLIB): $(SEVENZIPOBJ) $(UTILOBJ) $(COREOBJ) $(LUAOBJ) Libretro/libretro.cpp
 	mkdir -p bin
 	mkdir -p Libretro/$(OBJFOLDER)
-	$(CPPC) $(GCCOPTIONS) $(LINKOPTIONS) -lws2_32 -shared -o $(LIBRETROLIB) Libretro/*.cpp $(SEVENZIPOBJ) $(UTILOBJ) $(COREOBJ) $(LUAOBJ) -pthread $(FSLIB)
+	$(CPPC) $(GCCOPTIONS) $(LINKOPTIONS) -shared -o $(LIBRETROLIB) Libretro/*.cpp $(SEVENZIPOBJ) $(UTILOBJ) $(COREOBJ) $(LUAOBJ) -pthread $(FSLIB) -lws2_32
 	cp $(LIBRETROLIB) bin/pgohelperlib.so
 	mv $(LIBRETROLIB) Libretro/$(OBJFOLDER) 
 
