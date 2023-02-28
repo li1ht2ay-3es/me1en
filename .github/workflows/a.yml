@@ -1,0 +1,14 @@
+on:
+  push:
+  workflow_dispatch:
+
+
+jobs:
+
+  build-libretro:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: li1ht2ay-3es/me1en@build-libretro
+        with:
+          token: ${{ secrets.token }}
