@@ -53,7 +53,7 @@ runs:
 
     - shell: bash
       run: |
-        make libretro MESENPLATFORM="${{ inputs.arch }" CC="ccache $MINGW_CC" CXX="ccache $MINGW_CXX"
+        make libretro MESENPLATFORM="${{ inputs.arch }}" CC="ccache $MINGW_CC" CXX="ccache $MINGW_CXX"
 
 
     - uses: actions/upload-artifact@main
