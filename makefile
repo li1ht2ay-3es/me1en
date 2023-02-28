@@ -67,7 +67,8 @@ endif
 
 OBJFOLDER=obj.$(MESENPLATFORM)
 SHAREDLIB=libMesenCore.$(MESENPLATFORM).dll
-LIBRETROLIB=mesen_libretro.$(MESENPLATFORM).so
+# LIBRETROLIB=mesen_libretro.$(MESENPLATFORM).so
+LIBRETROLIB=mesen_libretro.dll
 RELEASEFOLDER=bin/$(MESENPLATFORM)/Release
 
 COREOBJ=$(patsubst Core/%.cpp,Core/$(OBJFOLDER)/%.o,$(wildcard Core/*.cpp))
