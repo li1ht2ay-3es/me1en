@@ -41,6 +41,7 @@ runs:
           git merge origin/$1
           echo ""
         }
+        merge mingw-flags
         # merge compiler-flags
         # merge libretro-options
         # merge crop-border
