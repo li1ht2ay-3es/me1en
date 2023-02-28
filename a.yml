@@ -1,0 +1,57 @@
+description: build libretro
+
+
+inputs:
+  token:
+    description: github token
+    required: false
+    default: ''
+
+
+runs:
+  using: composite
+
+  steps:
+    - uses: li1ht2ay-3es/gi1-ac2io3s@checkout-repo
+      with:
+        token: ${{ inputs.token }}
+        branch: upstream
+        auto: true
+
+
+    - uses: li1ht2ay-3es/gi1-ac2io3s@mingw-install
+      with:
+        arch: ${{ inputs.arch }}
+
+
+    - uses: hendrikmuhs/ccache-action@main
+      with:
+        key: ${{ inputs.core }}-${{ inputs.arch }}
+
+
+    - shell: bash
+      run: |
+        merge () {
+          echo "<<< ===  merging  $1  === >>>"
+          git merge origin/$1
+          echo ""
+        }
+        # merge compiler-flags
+        # merge libretro-options
+        # merge crop-border
+        # merge fast-bootrom
+        # merge osd-message
+        # merge sprite-limit
+        # merge video-overclock
+        # merge volume-level
+
+
+    - shell: bash
+      run: |
+        make platform="win" CC="ccache $MINGW_CC" CXX="ccache $MINGW_CXX"
+
+
+    - uses: actions/upload-artifact@main
+      with:
+        name: vice_${{ inputs.core }}_${{ inputs.arch }}
+        path: ${{ github.workspace }}/**.dll
