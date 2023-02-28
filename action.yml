@@ -54,7 +54,7 @@ runs:
 
     - shell: bash
       run: |
-        make libretro MESENPLATFORM="${{ inputs.arch }}" USE_GCC="true" LTO="true" CPPC="ccache $MINGW_CXX" CC="ccache $MINGW_CC" CXX="ccache $MINGW_CXX"
+        make libretro MESENPLATFORM="${{ inputs.arch }}" USE_GCC="true" LTO="true" STATICLINK="true" CPPC="ccache $MINGW_CXX" CC="ccache $MINGW_CC" CXX="ccache $MINGW_CXX"
 
 
     - uses: actions/upload-artifact@main
