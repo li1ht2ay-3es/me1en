@@ -102,7 +102,6 @@ ui: InteropDLL/$(OBJFOLDER)/$(SHAREDLIB)
 libretro: Libretro/$(OBJFOLDER)/$(LIBRETROLIB)
 	mkdir -p bin
 	cp ./Libretro/$(OBJFOLDER)/$(LIBRETROLIB) ./bin/
-	ls -R
 
 core: InteropDLL/$(OBJFOLDER)/$(SHAREDLIB)
 
