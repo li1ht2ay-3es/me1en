@@ -60,4 +60,4 @@ runs:
     - uses: actions/upload-artifact@main
       with:
         name: mesen_${{ inputs.arch }}
-        path: ${{ github.workspace }}/**.dll
+        path: ${{ github.workspace }}/bin/**.dll
