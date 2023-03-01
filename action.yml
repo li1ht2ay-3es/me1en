@@ -42,6 +42,8 @@ runs:
           echo ""
         }
         merge mingw-flags
+        merge remove-epsm
+
         # merge compiler-flags
         # merge libretro-options
         # merge crop-border
