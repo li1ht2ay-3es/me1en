@@ -176,6 +176,8 @@ protected:
 
 	void ClockAudio() override
 	{
+		return;
+
 		EPSMSSGAudio::ClockAudio();
 
 		_clock += getClockFrequency() / (double)_console->GetCpu()->GetClockRate(_console->GetModel());
