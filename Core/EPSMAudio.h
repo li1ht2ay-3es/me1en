@@ -54,6 +54,8 @@ private:
 
 	void UpdateOutputLevel()
 	{
+		return;
+
 		for (size_t x = 0; x < 2; x++)
 		{
 			_console->GetApu()->AddExpansionAudioDelta(x == 0 ? AudioChannel::EPSM_L : AudioChannel::EPSM_R, _currentOutputs[x] - _lastOutputs[x]);
@@ -63,11 +65,15 @@ private:
 
 	uint8_t GetCurrentCycle() const
 	{
+		return 0;
+
 		return static_cast<uint8_t>(std::floor(_clock)) % cycleCount;
 	}
 
 	void WriteToChip(uint8_t a, uint8_t d)
 	{
+		return;
+
 		const auto cycle = GetCurrentCycle();
 
 		if (_inputBuffer[cycle].wrote)
@@ -86,6 +92,8 @@ private:
 
 	void WriteToChipIRQ(uint16_t addr, uint8_t value)
 	{
+		return;
+
 		switch (addr) {
 		case 0x0:
 		case 0x2:
@@ -158,6 +166,8 @@ private:
 
 	uint32_t getClockFrequency()  
 	{
+		return 0;
+
 		return _console->GetSettings()->GetEPSMClockFrequency() / 6;
 	}
 
@@ -263,6 +273,8 @@ public:
 
 	void WriteRegister(uint16_t addr, uint8_t value, uint8_t custom = 0, uint8_t epsmA0 = 0, uint8_t epsmA1 = 0)
 	{
+		return;
+
 		if (!custom) {
 			switch (addr) {
 			case 0x4016:
