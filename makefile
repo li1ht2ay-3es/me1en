@@ -18,7 +18,7 @@
 #Usage: LTO=true make
 
 MESENFLAGS=
-libretro : MESENFLAGS=-D LIBRETRO -D LUASOCKET_INET_PTON
+libretro : MESENFLAGS=-D LIBRETRO -D LUASOCKET_INET_PTON -MMD
 
 ifeq ($(USE_GCC),true)
 	CPPC=g++
