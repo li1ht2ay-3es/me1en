@@ -177,3 +177,5 @@ clean:
 	rm -rf TestHelper/$(OBJFOLDER)
 	rm -rf PGOHelper/$(OBJFOLDER)
 	rm -rf $(RELEASEFOLDER)
+
+-include $(OBJECTS:%.o=%.d)
