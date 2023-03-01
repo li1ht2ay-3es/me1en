@@ -67,8 +67,7 @@ endif
 
 OBJFOLDER=obj.$(MESENPLATFORM)
 SHAREDLIB=libMesenCore.$(MESENPLATFORM).dll
-# LIBRETROLIB=mesen_libretro.$(MESENPLATFORM).so
-LIBRETROLIB=mesen_libretro.dll
+LIBRETROLIB=mesen_libretro.$(MESENPLATFORM).dll
 RELEASEFOLDER=bin/$(MESENPLATFORM)/Release
 
 COREOBJ=$(patsubst Core/%.cpp,Core/$(OBJFOLDER)/%.o,$(wildcard Core/*.cpp))
@@ -103,6 +102,7 @@ ui: InteropDLL/$(OBJFOLDER)/$(SHAREDLIB)
 libretro: Libretro/$(OBJFOLDER)/$(LIBRETROLIB)
 	mkdir -p bin
 	cp ./Libretro/$(OBJFOLDER)/$(LIBRETROLIB) ./bin/
+	ls -R
 
 core: InteropDLL/$(OBJFOLDER)/$(SHAREDLIB)
 
