@@ -29,7 +29,7 @@ runs:
 
     - uses: li1ht2ay-3es/gi1-ac2io3s@keep-alive
       with:
-        branch: build-libretro
+        branch: build_libretro
 
         auto: true
         token: ${{ inputs.token }}
