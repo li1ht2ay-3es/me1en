@@ -42,11 +42,11 @@ runs:
           echo ""
         }
 
-        merge framebuffer-resize
-        merge loadstate-mismatch
-        merge mingw-flags
-        merge remove-blip
-        merge remove-epsm
+        merge framebuffer_resize
+        merge loadstate_mismatch
+        merge mingw_flags
+        merge blip_fast
+        merge epsm_remove
 
         # merge libretro-options
         # merge crop-border
