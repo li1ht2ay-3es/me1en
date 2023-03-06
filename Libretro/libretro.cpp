@@ -1210,7 +1210,7 @@ extern "C" {
 		}
 
 		if(hscale <= 2) {
-			_renderer->GetSystemAudioVideoInfo(*info, NES_NTSC_OUT_WIDTH(256), 240 * vscale);
+			_renderer->GetSystemAudioVideoInfo(*info, 256, 240 * vscale);
 		} else {
 			_renderer->GetSystemAudioVideoInfo(*info, 256 * hscale, 240 * vscale);
 		}
