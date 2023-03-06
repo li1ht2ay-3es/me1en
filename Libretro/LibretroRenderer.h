@@ -34,8 +34,7 @@ public:
 	virtual void UpdateFrame(void *frameBuffer, uint32_t width, uint32_t height) override
 	{
 		if(!_skipMode && _sendFrame) {
-			//Use Blargg's NTSC filter's max size as a minimum resolution, to prevent changing resolution too often
-			int32_t newWidth = std::max<int32_t>(width, NES_NTSC_OUT_WIDTH(256));
+			int32_t newWidth = std::max<int32_t>(width, 256);
 			int32_t newHeight = std::max<int32_t>(height, 240);
 			if(_retroEnv != nullptr && (_previousWidth != newWidth || _previousHeight != newHeight)) {
 				//Resolution change is needed
