@@ -294,6 +294,10 @@ simply ignoring the low half. */
 
 void blip_add_delta( blip_t* m, unsigned time, int delta )
 {
+	blip_add_delta_fast( m, time, delta );
+	return;
+
+
 	unsigned fixed = (unsigned) ((time * m->factor + m->offset) >> pre_shift);
 	buf_t* out = SAMPLES( m ) + m->avail + (fixed >> frac_bits);
 	
@@ -340,6 +344,6 @@ void blip_add_delta_fast( blip_t* m, unsigned time, int delta )
 	/* Fails if buffer size was exceeded */
 	assert( out <= &SAMPLES( m ) [m->size + end_frame_extra] );
 	
-	out [7] += delta * delta_unit - delta2;
-	out [8] += delta2;
+	//out [7] += delta * delta_unit - delta2;
+	out [0] += delta2;
 }
