@@ -232,7 +232,7 @@ int blip_read_samples( blip_t* m, short out [], int count, int stereo )
 			out += step;
 			
 			/* High-pass filter */
-			sum -= s << (delta_bits - bass_shift);
+			//sum -= s << (delta_bits - bass_shift);
 		}
 		while ( in != end );
 		m->integrator = sum;
@@ -344,6 +344,7 @@ void blip_add_delta_fast( blip_t* m, unsigned time, int delta )
 	/* Fails if buffer size was exceeded */
 	assert( out <= &SAMPLES( m ) [m->size + end_frame_extra] );
 	
-	//out [7] += delta * delta_unit - delta2;
-	out [0] += delta2;
+	//out [0] += delta * delta_unit - delta2;
+	//out [1] += delta2;
+	out [0] += delta;
 }
