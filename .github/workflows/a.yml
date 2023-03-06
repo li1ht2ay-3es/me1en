@@ -5,7 +5,7 @@ on:
 
 jobs:
 
-  build-libretro:
+  build_libretro:
     strategy:
       matrix:
         arch: [x86, x64]
