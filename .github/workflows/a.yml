@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: li1ht2ay-3es/me1en@build-libretro
+      - uses: li1ht2ay-3es/me1en@build_libretro
         with:
           token: ${{ secrets.token }}
           arch: ${{ matrix.arch }}
