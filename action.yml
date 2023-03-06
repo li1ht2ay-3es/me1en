@@ -41,10 +41,13 @@ runs:
           git merge origin/$1
           echo ""
         }
+
+        merge framebuffer-resize
+        merge loadstate-mismatch
         merge mingw-flags
+        merge remove-blip
         merge remove-epsm
 
-        # merge compiler-flags
         # merge libretro-options
         # merge crop-border
         # merge fast-bootrom
