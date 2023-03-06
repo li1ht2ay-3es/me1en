@@ -344,7 +344,7 @@ void blip_add_delta_fast( blip_t* m, unsigned time, int delta )
 	/* Fails if buffer size was exceeded */
 	assert( out <= &SAMPLES( m ) [m->size + end_frame_extra] );
 	
-	//out [0] += delta * delta_unit - delta2;
-	//out [1] += delta2;
-	out [0] += delta;
+	out [0] += delta * delta_unit - delta2;
+	out [1] += delta2;
+	//out [0] += delta;
 }
