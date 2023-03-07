@@ -33,7 +33,7 @@ else
 endif
 
 GCCOPTIONS=-fPIC -Wall --std=c++17 -O3 -funroll-loops $(MESENFLAGS)
-CCOPTIONS=-fPIC -Wall -O3 $(MESENFLAGS)
+CCOPTIONS=-fPIC -Wall -O3 -funroll-loops $(MESENFLAGS)
 
 ifeq ($(MESENPLATFORM),x86)
 	MESENPLATFORM=x86
