@@ -346,5 +346,4 @@ void blip_add_delta_fast( blip_t* m, unsigned time, int delta )
 	
 	out [0] += delta * delta_unit - delta2;
 	out [1] += delta2;
-	//out [0] += delta;
 }
