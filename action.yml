@@ -42,7 +42,7 @@ runs:
           echo ""
         }
 
-        # merge blip_fast
+        merge blip_fast
         merge epsm_remove
         merge framebuffer_resize
         merge loadstate_mismatch
