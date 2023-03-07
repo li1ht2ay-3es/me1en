@@ -251,6 +251,8 @@ protected:
 
 	virtual uint32_t GetSSGClockFrequency() override
 	{
+		return 0;
+
 		return _console->GetSettings()->GetEPSMClockFrequency() / 4;
 	}
 
