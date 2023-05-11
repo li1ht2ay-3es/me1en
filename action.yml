@@ -1,0 +1,87 @@
+description: Build program
+
+
+inputs:
+  token:
+    description: Personal Access Token
+    required: false
+    default: ''
+
+  branch:
+    description: platform
+    required: false
+    default: ''
+
+  arch:
+    description: platform
+    required: false
+    default: 'x64'
+
+
+
+runs:
+  using: composite
+
+  steps:
+
+  - uses: li1ht2ay-3es/gi1-ac2io3s@checkout-branch
+    with:
+      branch: ${{ inputs.branch }}
+
+      token: ${{ inputs.token }}
+      auto: true
+
+
+  - if: inputs.arch == 'x86' || inputs.arch == 'x64'
+    uses: li1ht2ay-3es/gi1-ac2io3s@mingw-install
+    with:
+      arch: ${{ inputs.arch }}
+
+
+  - uses: li1ht2ay-3es/cc1ch2-ac3io4@custom
+    with:
+      key: ${{ inputs.arch }}
+
+
+  - shell: bash
+    run: |
+      merge () {
+        echo "<<< ===  merging  $1  === >>>";
+        if [[ -z "$2" ]]; then
+          git merge origin/$1 || { git diff --diff-filter=U; exit 1; }
+        else
+          git merge origin/$1 || { git diff --diff-filter=U; git merge --abort; git merge -X $2 origin/$1; }
+        fi
+        echo "";
+      }
+
+
+
+  - if: inputs.arch == 'x86' || inputs.arch == 'x64'
+    working-directory: ${{ github.workspace }}/Libretro
+    env:
+      CC: ccache ${{ env.MINGW_CC }}
+      CXX: ccache ${{ env.MINGW_CXX }}
+    shell: bash
+    run: |
+      make -f Makefile platform="win"
+
+
+
+  - if: inputs.arch == 'so64'
+    working-directory: ${{ github.workspace }}/Libretro
+    env:
+      CC: ccache gcc
+      CXX: ccache g++
+    shell: bash
+    run: |
+      make -f Makefile platform="unix"
+
+
+
+  - uses: actions/upload-artifact@main
+    with:
+      name: Mesen_${{ inputs.arch }}
+      path: |
+        ${{ github.workspace }}/Libretro/**.dll
+        ${{ github.workspace }}/Libretro/**.so
