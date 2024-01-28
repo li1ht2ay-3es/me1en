@@ -47,7 +47,7 @@ protected:
 			SelectPRGPage(0, ((_regs[1] & 0x3F) << 1) | (_regs[3] & 0x07));
 			SelectPRGPage(1, ((_regs[1] & 0x3F) << 1) | 0x07);
 		}
-		SetMirroringType(_regs[0] & 0x20 ? MirroringType::Horizontal : MirroringType::Vertical);
+		SetMirroringType((_regs[0] & 0x20) ? MirroringType::Horizontal : MirroringType::Vertical);
 		SelectCHRPage(0, (_regs[2] << 2) | ((_regs[0] >> 1) & 0x03));
 	}
 

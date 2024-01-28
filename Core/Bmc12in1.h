@@ -36,7 +36,7 @@ protected:
 			SelectPRGPage(0, bank | (_regs[0] & 0x07));
 			SelectPRGPage(1, bank | 0x07);
 		}
-		SetMirroringType(_mode & 0x04 ? MirroringType::Horizontal : MirroringType::Vertical);
+		SetMirroringType((_mode & 0x04) ? MirroringType::Horizontal : MirroringType::Vertical);
 	}
 
 	void WriteRegister(uint16_t addr, uint8_t value) override

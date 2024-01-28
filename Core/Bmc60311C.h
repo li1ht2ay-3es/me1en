@@ -58,7 +58,7 @@ protected:
 				break;
 		}
 
-		SetMirroringType(_mode & 0x08 ? MirroringType::Horizontal : MirroringType::Vertical);
+		SetMirroringType((_mode & 0x08) ? MirroringType::Horizontal : MirroringType::Vertical);
 	}
 
 	void WriteRegister(uint16_t addr, uint8_t value) override

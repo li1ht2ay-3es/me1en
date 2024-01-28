@@ -57,7 +57,7 @@ protected:
 		} else {
 			switch(addr & 0xF00F) {
 				case 0x8000: SelectPRGPage(0, ((value & 0x02) << 2) | ((value & 0x08) >> 2) | (value & 0x05)); break; // EPROM dump have mixed PRG and CHR banks, data lines to mapper seems to be mixed
-				case 0x8008: SetMirroringType(value & 0x01 ? MirroringType::Horizontal : MirroringType::Vertical); break;
+				case 0x8008: SetMirroringType((value & 0x01) ? MirroringType::Horizontal : MirroringType::Vertical); break;
 				case 0xA000: SelectPRGPage(1, ((value & 0x02) << 2) | ((value & 0x08) >> 2) | (value & 0x05)); break;
 			}
 		}

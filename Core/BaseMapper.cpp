@@ -78,7 +78,7 @@ void BaseMapper::SetCpuMemoryMapping(uint16_t startAddr, uint16_t endAddr, int16
 	};
 	wrapPageNumber(pageNumber);
 	
-	accessType = accessType != -1 ? accessType : defaultAccessType;
+	accessType = (accessType != -1) ? accessType : defaultAccessType;
 	
 	if((uint16_t)(endAddr - startAddr) >= pageSize) {
 		//If range is bigger than a single page, keep going until we reach the last page
@@ -125,7 +125,7 @@ void BaseMapper::SetCpuMemoryMapping(uint16_t startAddr, uint16_t endAddr, uint8
 	endAddr >>= 8;
 	for(uint16_t i = startAddr; i <= endAddr; i++) {
 		_prgPages[i] = source;
-		_prgMemoryAccess[i] = accessType != -1 ? (MemoryAccessType)accessType : MemoryAccessType::Read;
+		_prgMemoryAccess[i] = (accessType != -1) ? (MemoryAccessType)accessType : MemoryAccessType::Read;
 
 		source += 0x100;
 	}
@@ -156,7 +156,7 @@ void BaseMapper::SetPpuMemoryMapping(uint16_t startAddr, uint16_t endAddr, uint1
 	uint8_t defaultAccessType = MemoryAccessType::Read;
 
 	if(type == ChrMemoryType::Default) {
-		type = _chrRomSize > 0 ? ChrMemoryType::ChrRom : ChrMemoryType::ChrRam;
+		type = (_chrRomSize > 0) ? ChrMemoryType::ChrRom : ChrMemoryType::ChrRam;
 	}
 
 	switch(type) {
@@ -196,7 +196,7 @@ void BaseMapper::SetPpuMemoryMapping(uint16_t startAddr, uint16_t endAddr, uint1
 			pageNumber = (pageNumber + 1) % pageCount;
 		}
 	} else {
-		SetPpuMemoryMapping(startAddr, endAddr, type, pageNumber * pageSize, accessType == -1 ? defaultAccessType : accessType);
+		SetPpuMemoryMapping(startAddr, endAddr, type, pageNumber * pageSize, (accessType == -1) ? defaultAccessType : accessType);
 	}
 }
 
@@ -205,7 +205,7 @@ void BaseMapper::SetPpuMemoryMapping(uint16_t startAddr, uint16_t endAddr, ChrMe
 	uint8_t* sourceMemory = nullptr;
 
 	if(type == ChrMemoryType::Default) {
-		type = _chrRomSize > 0 ? ChrMemoryType::ChrRom : ChrMemoryType::ChrRam;
+		type = (_chrRomSize > 0) ? ChrMemoryType::ChrRom : ChrMemoryType::ChrRam;
 	}
 
 	switch(type) {
@@ -240,7 +240,7 @@ void BaseMapper::SetPpuMemoryMapping(uint16_t startAddr, uint16_t endAddr, uint8
 	endAddr >>= 8;
 	for(uint16_t i = startAddr; i <= endAddr; i++) {
 		_chrPages[i] = sourceMemory;
-		_chrMemoryAccess[i] = accessType != -1 ? (MemoryAccessType)accessType : MemoryAccessType::ReadWrite;
+		_chrMemoryAccess[i] = (accessType != -1) ? (MemoryAccessType)accessType : MemoryAccessType::ReadWrite;
 
 		if(sourceMemory != nullptr) {
 			sourceMemory += 0x100;
@@ -323,9 +323,9 @@ void BaseMapper::SelectCHRPage(uint16_t slot, uint16_t page, ChrMemoryType memor
 		pageSize = BaseMapper::NametableSize;
 	} else {
 		if(memoryType == ChrMemoryType::Default) {
-			memoryType = _chrRomSize > 0 ? ChrMemoryType::ChrRom : ChrMemoryType::ChrRam;
+			memoryType = (_chrRomSize > 0) ? ChrMemoryType::ChrRom : ChrMemoryType::ChrRam;
 		}
-		pageSize = memoryType == ChrMemoryType::ChrRam ? InternalGetChrRamPageSize() : InternalGetChrPageSize();
+		pageSize = (memoryType == ChrMemoryType::ChrRam) ? InternalGetChrRamPageSize() : InternalGetChrPageSize();
 	}
 
 	uint16_t startAddr = slot * pageSize;
@@ -393,7 +393,7 @@ uint32_t BaseMapper::GetCHRPageCount()
 void BaseMapper::InitializeChrRam(int32_t chrRamSize)
 {
 	uint32_t defaultRamSize = GetChrRamSize() ? GetChrRamSize() : 0x2000;
-	_chrRamSize = chrRamSize >= 0 ? chrRamSize : defaultRamSize;
+	_chrRamSize = (chrRamSize >= 0) ? chrRamSize : defaultRamSize;
 	if(_chrRamSize > 0) {
 		_chrRam = new uint8_t[_chrRamSize];
 		_console->InitializeRam(_chrRam, _chrRamSize);
@@ -761,7 +761,7 @@ uint8_t BaseMapper::InternalReadVRAM(uint16_t addr)
 	}
 
 	//Open bus - "When CHR is disabled, the pattern tables are open bus. Theoretically, this should return the LSB of the address read, but real-world behavior varies."
-	return _vramOpenBusValue >= 0 ? _vramOpenBusValue : addr;
+	return (_vramOpenBusValue >= 0) ? _vramOpenBusValue : addr;
 }
 
 uint8_t BaseMapper::DebugReadVRAM(uint16_t addr, bool disableSideEffects)

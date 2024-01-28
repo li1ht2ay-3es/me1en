@@ -43,6 +43,6 @@ protected:
 		SelectPRGPage(2, (addr >> 1 & 0x1FC) | ((addr & 0x2) ? 0x2 : (addr >> 1 & 0x2) | 0x0));
 		SelectPRGPage(3, (addr & 0x800) ? ((addr & 0x07C) | ((addr & 0x06) ? 0x03 : 0x01)) : ((addr >> 1 & 0x01FC) | ((addr & 0x02) ? 0x03 : ((addr >> 1 & 0x02) | 0x01))));
 
-		SetMirroringType(addr & 0x01 ? MirroringType::Horizontal : MirroringType::Vertical);
+		SetMirroringType((addr & 0x01) ? MirroringType::Horizontal : MirroringType::Vertical);
 	}
 };

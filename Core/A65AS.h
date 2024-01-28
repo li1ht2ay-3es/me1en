@@ -24,9 +24,9 @@ protected:
 		}
 		
 		if(value & 0x80) {
-			SetMirroringType(value & 0x20 ? MirroringType::ScreenBOnly : MirroringType::ScreenAOnly);
+			SetMirroringType((value & 0x20) ? MirroringType::ScreenBOnly : MirroringType::ScreenAOnly);
 		} else {
-			SetMirroringType(value & 0x08 ? MirroringType::Horizontal : MirroringType::Vertical);
+			SetMirroringType((value & 0x08) ? MirroringType::Horizontal : MirroringType::Vertical);
 		}
 	}
 };

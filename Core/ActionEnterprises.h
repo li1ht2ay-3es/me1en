@@ -38,6 +38,6 @@ protected:
 
 		SelectCHRPage(0, ((addr & 0x0F) << 2) | (value & 0x03));
 
-		SetMirroringType(addr & 0x2000 ? MirroringType::Horizontal : MirroringType::Vertical);
+		SetMirroringType((addr & 0x2000) ? MirroringType::Horizontal : MirroringType::Vertical);
 	}
 };

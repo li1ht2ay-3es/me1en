@@ -21,6 +21,6 @@ protected:
 		SelectPRGPage(0, bank & ~prgBit);
 		SelectPRGPage(1, bank | prgBit);
 		SelectCHRPage(0, ((addr >> 8) & 0x40) | (addr & 0x3F));
-		SetMirroringType(addr & 0x2000 ? MirroringType::Horizontal : MirroringType::Vertical);
+		SetMirroringType((addr & 0x2000) ? MirroringType::Horizontal : MirroringType::Vertical);
 	}
 };

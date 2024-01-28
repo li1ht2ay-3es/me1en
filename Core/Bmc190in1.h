@@ -18,6 +18,6 @@ protected:
 		SelectPRGPage(0, (value >> 2) & 0x07);
 		SelectPRGPage(1, (value >> 2) & 0x07);
 		SelectCHRPage(0, (value >> 2) & 0x07);
-		SetMirroringType(value & 0x01 ? MirroringType::Horizontal : MirroringType::Vertical);
+		SetMirroringType((value & 0x01) ? MirroringType::Horizontal : MirroringType::Vertical);
 	}
 };

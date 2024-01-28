@@ -46,6 +46,6 @@ protected:
 			}
 		}
 
-		SetMirroringType(value & 0x20 ? MirroringType::Horizontal : MirroringType::Vertical);
+		SetMirroringType((value & 0x20) ? MirroringType::Horizontal : MirroringType::Vertical);
 	}
 };

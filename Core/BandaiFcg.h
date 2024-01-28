@@ -28,7 +28,7 @@ protected:
 	uint16_t RegisterStartAddress() override { return 0x6000; }
 	uint16_t RegisterEndAddress() override { return 0xFFFF; }
 	bool AllowRegisterRead() override { return true; }
-	ConsoleFeatures GetAvailableFeatures() override { return _romInfo.MapperID == 157 ? (ConsoleFeatures)((int)ConsoleFeatures::BarcodeReader | (int)ConsoleFeatures::DatachBarcodeReader) : ConsoleFeatures::None; }
+	ConsoleFeatures GetAvailableFeatures() override { return (_romInfo.MapperID == 157) ? (ConsoleFeatures)((int)ConsoleFeatures::BarcodeReader | (int)ConsoleFeatures::DatachBarcodeReader) : ConsoleFeatures::None; }
 
 	void InitMapper() override
 	{
@@ -225,7 +225,7 @@ protected:
 
 			case 0x0D:
 				if(_romInfo.MapperID == 153) {
-					SetCpuMemoryMapping(0x6000, 0x7FFF, 0, HasBattery() ? PrgMemoryType::SaveRam : PrgMemoryType::WorkRam, value & 0x20 ? MemoryAccessType::ReadWrite : MemoryAccessType::NoAccess);
+					SetCpuMemoryMapping(0x6000, 0x7FFF, 0, HasBattery() ? PrgMemoryType::SaveRam : PrgMemoryType::WorkRam, (value & 0x20) ? MemoryAccessType::ReadWrite : MemoryAccessType::NoAccess);
 				} else {
 					uint8_t scl = (value & 0x20) >> 5;
 					uint8_t sda = (value & 0x40) >> 6;

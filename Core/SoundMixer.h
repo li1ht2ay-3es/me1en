@@ -26,8 +26,8 @@ public:
 	static constexpr uint32_t BitsPerSample = 16;
 
 private:
-	static constexpr uint32_t MaxSampleRate = 96000;
-	static constexpr uint32_t MaxSamplesPerFrame = MaxSampleRate / 60 * 4 * 2; //x4 to allow CPU overclocking up to 10x, x2 for panning stereo
+	static constexpr uint32_t MaxSampleRate = 1536000;
+	static constexpr uint32_t MaxSamplesPerFrame = MaxSampleRate / 50 * 4 * 2; //x4 to allow CPU overclocking up to 10x, x2 for panning stereo
 	static constexpr uint32_t MaxChannelCount = 11;
 
 	retro_audio_sample_batch_t _sendAudioSample = nullptr;

@@ -39,7 +39,7 @@ protected:
 	void WriteRegister(uint16_t addr, uint8_t value) override
 	{
 		if(addr == 0x4025) {
-			SetMirroringType(value & 0x08 ? MirroringType::Horizontal : MirroringType::Vertical);
+			SetMirroringType((value & 0x08) ? MirroringType::Horizontal : MirroringType::Vertical);
 		} else {
 			if(addr == 0x8001) {
 				//Green beret

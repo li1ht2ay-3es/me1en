@@ -22,8 +22,8 @@ SoundMixer::SoundMixer(shared_ptr<Console> console)
 	_model = NesModel::NTSC;
 
 	// Reserve enough space in the output audio buffer
-	// for PAL content at a sample rate of 96 kHz
-	_audioSampleBuffer.resize(((size_t)((float)MaxSampleRate / 50.00697796826829) + 1) << 1);
+	// for PAL content at a sample rate of x kHz
+	_audioSampleBuffer.resize(SoundMixer::MaxSamplesPerFrame);
 	_audioSampleBufferPos = 0;
 }
 

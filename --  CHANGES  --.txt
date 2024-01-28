@@ -1,0 +1,12 @@
+Emulation:
+- Allow mismatching savestate
+
+
+Audio:
+- Internal sampling rates  (higher values = less lag, more crisp)
+- 64-bit blip buffer  (more accuracy, linear interpolation = less blur, remove bass)
+- Volume slider  (master = 0-200)
+
+
+Compiler:
+- MinGW build fixes  (ternary parsing)

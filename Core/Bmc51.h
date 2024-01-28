@@ -41,7 +41,7 @@ protected:
 			SetCpuMemoryMapping(0x6000, 0x7FFF, (0x2F | (_bank << 2)), PrgMemoryType::PrgRom);
 		}
 
-		SetMirroringType(_mode == 0x03 ? MirroringType::Horizontal : MirroringType::Vertical);
+		SetMirroringType((_mode == 0x03) ? MirroringType::Horizontal : MirroringType::Vertical);
 	}
 
 	void WriteRegister(uint16_t addr, uint8_t value) override

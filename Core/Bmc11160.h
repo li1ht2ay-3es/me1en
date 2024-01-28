@@ -23,6 +23,6 @@ protected:
 		uint8_t bank = (value >> 4) & 0x07;
 		SelectPRGPage(0, bank);
 		SelectCHRPage(0, (bank << 2) | (value & 0x03));
-		SetMirroringType(value & 0x80 ? MirroringType::Vertical : MirroringType::Horizontal);
+		SetMirroringType((value & 0x80) ? MirroringType::Vertical : MirroringType::Horizontal);
 	}
 };
